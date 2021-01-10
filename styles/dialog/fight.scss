@@ -27,8 +27,22 @@
         grid-template-columns: repeat(4, 1fr);
         margin: 1em 0 1em 0;
 
+        .pill-toggle{
+            & > input[type="checkbox"]{
+                &:checked + label {
+                    background: linear-gradient(rgb(238, 230, 126), rgb(170, 159, 0));
+                    border: 2px solid #880000;
+                    color: #880000;
+        }}}
+
+        .fighters-label{
+            width: 100%;
+            font-size: 1.25em;
+            font-weight: bold;
+        }
+
         .portrait {
-            width: 130px; height: 130px;
+            width: 120px; height: 120px;
             border: 2px solid #880000;
             object-fit: cover;
         }
@@ -66,13 +80,6 @@
             }
         }
 
-        .portrait-actions{
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
         .pill-toggle > label {
             border-radius: 0;
         }
@@ -84,10 +91,30 @@
                 font-weight: bold;
                 padding-left: 5px;
             }
-            .control-button {
-                width: 100%;
-                height: min-content;
+            .portrait-actions {
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .fight-rolls {
+                    flex-grow: 1;
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    max-height: 130px;
+                    .control-button {
+                        overflow: hidden;
+                        width: 49%;
+                    }
+                }
             }
+           // .control-button {
+           //     width: 100%;
+           //     height: min-content;
+           // }
         }
 
         & > div {

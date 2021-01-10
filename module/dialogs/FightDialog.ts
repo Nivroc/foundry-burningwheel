@@ -116,6 +116,7 @@ export class FightDialog extends ExtendedTestDialog<FightDialogData> {
         html.find('button[data-action="rollPower"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "power"); });
         html.find('button[data-action="rollAgility"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "agility"); });
         html.find('button[data-action="rollSkill"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "skill"); });
+        html.find('button[data-action="rollSteel"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "steel"); });
 
         html.find('img[data-action="openSheet"]').on('click', (e: JQuery.ClickEvent) => {
             const id = e.target.dataset.actorId || "";
@@ -123,7 +124,7 @@ export class FightDialog extends ExtendedTestDialog<FightDialogData> {
         });
     }
     
-    private _handleRoll(e: JQuery.ClickEvent, type: "speed" | "agility" | "power" | "skill") {
+    private _handleRoll(e: JQuery.ClickEvent, type: "speed" | "agility" | "power" | "skill" | "steel") {
         e.preventDefault();
         const dataPreset = getKeypressModifierPreset(e);
         const index = parseInt(e.target.dataset.index || "0");
