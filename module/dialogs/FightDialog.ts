@@ -111,20 +111,19 @@ export class FightDialog extends ExtendedTestDialog<FightDialogData> {
             this._toggleHidden(e.target);
         });
         html.find('.fighters-grid input, .fighters-grid select').on('change', (e: JQuery.ChangeEvent) => this.updateCollection(e, this.data.data.participants));
-
-        html.find('button[data-action="rollSpeed"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "speed"); });
-        html.find('button[data-action="rollPower"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "power"); });
-        html.find('button[data-action="rollAgility"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "agility"); });
-        html.find('button[data-action="rollSkill"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "skill"); });
-        html.find('button[data-action="rollSteel"]').on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, "steel"); });
-
-        html.find('img[data-action="openSheet"]').on('click', (e: JQuery.ClickEvent) => {
-            const id = e.target.dataset.actorId || "";
-            game.actors.find(a => a._id === id).sheet.render(true);
+        ["Speed", "Power", "Agility", "Skill", "Steel"].forEach((attr: string) => {
+            html.find('button[data-action="roll'+attr+'"]')
+                .on('click', (e: JQuery.ClickEvent) => { this._handleRoll(e, attr.toLowerCase() as constants.FightAttr); });
         });
+        const openSheet = (e: JQuery.ClickEvent) => {
+            const id = e.currentTarget.attributes.getNamedItem("data-actor-id").nodeValue || "";
+            game.actors.find(a => a._id === id).sheet.render(true);
+        };
+        html.find('img[data-action="openSheet"]').on('click', openSheet);
+        html.find('div[data-action="openSheet"]').on('click', openSheet);
     }
     
-    private _handleRoll(e: JQuery.ClickEvent, type: "speed" | "agility" | "power" | "skill" | "steel") {
+    private _handleRoll(e: JQuery.ClickEvent, type: constants.FightAttr) {
         e.preventDefault();
         const dataPreset = getKeypressModifierPreset(e);
         const index = parseInt(e.target.dataset.index || "0");

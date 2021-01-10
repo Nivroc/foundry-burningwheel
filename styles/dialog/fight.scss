@@ -52,20 +52,21 @@
             align-items: center;
             justify-content: center;
             flex-grow: 1;
+            .reflexes {
+                padding-right: 15px;
+            }
             td {
                 height: 26px;
                 text-align: left;
                 overflow: hidden;
                 white-space: nowrap;
             }
-            
             .exponent {
                 text-align: right;
                 width: 22px;
                 height: 22px;
             }
-
-            .withLabels{
+            .withLabels {
                 display: flex;
                 flex-direction: row-reverse;
                 div {
@@ -237,6 +238,9 @@
                 align-items: center;
                 justify-content: center;
                 flex-grow: 1;
+                .reflexes{
+                    padding-right: 15px;
+                }
                 td {
                     height: 26px;
                     overflow: hidden;

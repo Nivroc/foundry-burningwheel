@@ -21,7 +21,7 @@
             <label for="showFightV3">Show Volley 3</label>
         </div>
         {{else}}
-        <div><h3><strong>Fighters</strong></h3></div><div>Volley 1</div><div>Volley 2</div><div>Volley 3</div>
+        <div class="fighters-label">Fighters</div><div>Volley 1</div><div>Volley 2</div><div>Volley 3</div>
         {{/if}}
         {{#each participants as |p i|}}
         <div class="volley-buttons flex-row">
@@ -37,32 +37,37 @@
                     <button class="control-button" data-index="{{i}}" data-action="rollSteel">Steel</button>
                 </div>
                 {{else}}
-                <div class="details">
-                    <table>
-                        <tr>
-                            <td>Reflexes</td> 
-                            <td class="exponent">{{p.reflexes}}</td>
-                        </tr>
-                        <tr>
-                            <td>Engagement</td>
-                            <td class="withLabels">
-                                <div class="exponent-meaning">+{{p.engagementBonus}}D</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Position</td>
-                            <td class="withLabels">
-                                <div class="exponent-meaning">+{{p.positionPenalty}}Ob</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Weapon</td>
-                            <td>
-                                <div class="exponent-meaning">{{#getParticipantWeapon p}}{{/getParticipantWeapon}}</div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                    {{#if ../gmView}}
+                        <div class="details clickable" data-action="openSheet" title="{{p.name}}" data-actor-id="{{p.id}}">
+                        <table>
+                            <tr>
+                                <td>Reflexes</td> 
+                                <td class="exponent reflexes">{{p.reflexes}}</td>
+                            </tr>
+                            <tr>
+                                <td>Engagement</td>
+                                <td class="withLabels">
+                                    <div class="exponent-meaning" style="width: 7px;"></div>
+                                    <div class="exponent-meaning">+{{p.engagementBonus}}D</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Position</td>
+                                <td class="withLabels">
+                                    <div class="exponent-meaning">+{{p.positionPenalty}}Ob</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Weapon</td>
+                                <td>
+                                    <div class="exponent-meaning">{{#getParticipantWeapon p}}{{/getParticipantWeapon}}</div>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+                    {{else}}
+                        <img class="portrait" src="{{p.imgSrc}}" title="{{p.name}}"/>
+                    {{/if}}
                 {{/if}}
             </div>
         </div>
@@ -118,11 +123,12 @@
                 <table>
                     <tr>
                         <td>Reflexes</td> 
-                        <td class="exponent">{{p.reflexes}}</td>
+                        <td class="exponent reflexes">{{p.reflexes}}</td>
                     </tr>
                     <tr>
                         <td>Engagement</td>
                         <td class="withLabels">
+                            <div class="exponent-meaning" style="width: 7px;"></div>
                             <div class="exponent-meaning">D</div>
                             <input data-index="{{i}}" name="engagementBonus" type="number" class="exponent" value="{{p.engagementBonus}}">
                             <div>+</div>

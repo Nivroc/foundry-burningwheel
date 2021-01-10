@@ -140,11 +140,12 @@ function registerHelpers() {
         return translateWoundValue(shade, value);
     });
 
+    //get participant current weapon by weaponId
     Handlebars.registerHelper("getParticipantWeapon", (participant: ParticipantEntry): string => {
         if (participant.weapons){
             return participant.weapons.find(x => x.id === participant.weaponId)?.label ?? "";
         } else {return "";}
-      });
+    });
 }
 
 
