@@ -46,8 +46,6 @@ export type SkillTypeString =
     "musical" | "peasant" | "physical" | "schoolofthought" |
     "seafaring" | "special" | "social" | "sorcerous" | "training";
 
-export type FightAttr = "speed" | "agility" | "power" | "skill" | "steel";
-
 export const skillTypes = [
     "academic",
     "artisan",

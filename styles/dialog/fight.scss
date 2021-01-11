@@ -23,7 +23,6 @@
         display: grid;
         width: 100%;
         height: min-content;
-        overflow: hidden;
         grid-template-columns: repeat(4, 1fr);
         margin: 1em 0 1em 0;
 
@@ -43,7 +42,6 @@
 
         .portrait {
             width: 120px; height: 120px;
-            border: 2px solid #880000;
             object-fit: cover;
         }
 
@@ -112,10 +110,6 @@
                     }
                 }
             }
-           // .control-button {
-           //     width: 100%;
-           //     height: min-content;
-           // }
         }
 
         & > div {
@@ -206,11 +200,12 @@
                 }
             }
 
-            .fighter-action-panel{
+            .fighter-action-panel {
                 display: flex;
                 flex-direction: row;
                 position: relative;
                 flex-grow: 1;
+
                 .remove-fighter {
                     position: absolute;
                     width: 1.5em;
@@ -225,6 +220,7 @@
                     align-items: center;
                     font-size: 1.125em;
                     font-weight: bold;
+                    padding-left: 15px;
                     flex-grow: 1;
                     width: calc(100% - 1.5em);
                     &:hover {

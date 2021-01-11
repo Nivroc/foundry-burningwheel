@@ -14,7 +14,7 @@ import { RangedWeapon } from "../items/rangedWeapon.js";
 import { Skill } from "../items/skill.js";
 import { Spell } from "../items/spell.js";
 import { handleAttrRoll } from "./rollAttribute.js";
-import { FightAttr } from "../constants.js";
+import { FightAttr } from "../dialogs/index.js";
 
 export async function handleFightRoll({actor, type, itemId, attackIndex, positionPenalty, engagementBonus, dataPreset }: FightRollOptions): Promise<unknown> {
     dataPreset = dataPreset || {};
